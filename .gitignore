@@ -1,0 +1,27 @@
+# Build output
+target/
+
+# Generated reports and logs
+reports/
+test-output/
+logs/
+*.log
+
+# Eclipse / IDE
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.vscode/
+
+# Secrets
+.env
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Personal notes (keep local, do not publish)
+InterviewQuestions.md

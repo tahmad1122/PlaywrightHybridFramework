@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Root element for Log4j2 configuration -->
+<Configuration status="WARN">
+
+	<!-- ========== APPENDERS: Where the log output goes ========== -->
+	<Appenders>
+
+		<!-- Console appender: logs will be printed to terminal -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+			<!-- Pattern Explanation:
+                 %d{HH:mm:ss.SSS} → Time (hours:minutes:seconds.milliseconds)
+                 [%t]             → Thread name
+                 %-5level         → Log level (INFO, ERROR, etc.)
+                 %logger{36}      → Logger name (class name, max 36 chars)
+                 %msg             → Log message
+                 %n               → New line -->
+		</Console>
+
+		<!-- RollingFile appender: logs go to file with rotation -->
+		<RollingFile name="File" fileName="./logs/logfile.log" filePattern="./logs/logfile-%d{yyyy-MM-dd}-%i.log.gz"> <!-- Rolled logs pattern -->   <!-- Active log file -->
+
+            <PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+
+			<!-- Policies define when to roll over -->
+            <Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />  <!-- Rotate when log
+				file reaches 10MB -->
+				<!-- You can also add TimeBasedTriggeringPolicy if needed -->
+			</Policies>
+
+			<!-- Rollover strategy: keep only the last 5 backups -->
+            <DefaultRolloverStrategy
+				max="5" />
+		</RollingFile>
+
+	</Appenders>
+
+	<!-- ========== LOGGERS: Define log levels and attach appenders ========== -->
+	<Loggers>
+
+		<!-- Root logger: applies to all classes unless overridden -->
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Root>
+
+		<!-- (Optional) Example: Custom logger for a specific class/package -->
+		<!--
+        <Logger name="com.yourproject.tests" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+        -->
+
+	</Loggers>
+
+</Configuration>
