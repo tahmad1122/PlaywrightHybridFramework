@@ -45,7 +45,7 @@ public class BaseTest {
 		playwright = Playwright.create();
 		ArrayList<String> arguments = new ArrayList<String>();
 		arguments.add("--start-maximized");
-		browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setArgs(arguments));
+		browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true).setArgs(arguments));
 		context = browser.newContext(new NewContextOptions().setViewportSize(null));
 		page = context.newPage();
 		page.navigate(ConfigManger.getProperty("baseUrl"));
