@@ -1,10 +1,10 @@
 # Build output
-target/
+/target/
 
 # Generated reports and logs
-reports/
-test-output/
-logs/
+/reports/
+/test-output/
+/logs/
 *.log
 
 # Eclipse / IDE
