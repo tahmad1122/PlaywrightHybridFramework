@@ -1,7 +1,6 @@
 package com.qaframework.pages;
 
 import org.slf4j.Logger;
-import org.testng.Assert;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -59,7 +58,7 @@ public class Login_Page {
 		Locator locator = page.getByText("Admin");
 		locator.waitFor();
 		System.out.println("Visible: " + locator.isVisible());
-		Assert.assertTrue(locator.isVisible(), "Admin text is not displayed");
+		
 	}
 
 }
